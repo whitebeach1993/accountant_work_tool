@@ -5,3 +5,4 @@ plotly
 pandas
 numpy
 gunicorn
+ash_bootstrap_components

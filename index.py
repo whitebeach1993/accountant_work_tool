@@ -15,7 +15,6 @@ server = app.server
 df = pd.read_csv("data/transaction.csv", encoding="cp932")
 view_columns = ['日付', '顧客名', '商品名', '分類', '単価', '数量', '金額']
 df = df[view_columns]
-# df = df.head()
 df["日付"] = pd.to_datetime(df['日付'], format='%Y-%m-%d')
 df["年"] = df['日付'].dt.year
 df["月"] = df['日付'].dt.month
@@ -50,12 +49,13 @@ app.layout = dbc.Container(
         dbc.Row(
             [
                 dbc.Col([
-                    html.H4("サンプルデータ"),
+                    html.H4("サンプルデータ(取引数: "+str(len(df))+")"),
                     dash_table.DataTable(df.to_dict('records'),
                                          [{"name": i, "id": i}
-                                             for i in df.columns],
+                                             for i in view_columns],
                                          page_size=5,
-                                         )
+                                         sort_action='native',)
+
 
                 ],
                     xs=12, sm=12, md=12, lg=6, xl=6,
@@ -66,6 +66,7 @@ app.layout = dbc.Container(
                                          [{"name": i, "id": i}
                                              for i in df_sum.columns],
                                          page_size=5,
+                                         sort_action='native',
                                          )
 
                 ],
@@ -73,6 +74,7 @@ app.layout = dbc.Container(
 
                 ),
             ],
+        className="g-0",
     ),
         dbc.Row(
             [

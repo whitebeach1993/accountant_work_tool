@@ -58,11 +58,8 @@ app.layout = dbc.Container(
                                          )
 
                 ],
-                    width=5.5,
-                    style={"height": "100%"},
-
+                    xs=12, sm=12, md=12, lg=6, xl=6,
                 ),
-                dbc.Col(width=1),
                 dbc.Col([
                     html.H4("サンプルデータの顧客名と商品名ごとの金額の合計値"),
                     dash_table.DataTable(df_sum.to_dict('records'),
@@ -72,12 +69,10 @@ app.layout = dbc.Container(
                                          )
 
                 ],
-                    width=5.5,
-                    style={"height": "100%"},
+                    xs=12, sm=12, md=12, lg=6, xl=6,
 
                 ),
             ],
-            # className="h-8",
     ),
         dbc.Row(
             [
@@ -90,12 +85,8 @@ app.layout = dbc.Container(
                         },
                         figure=transction_scatter,
                     ), ],
-                    width=6,
-                    style={"height": "100%"},
-
+                    xs=12, sm=12, md=12, lg=6, xl=6,
                 ),
-                # dbc.Col(width=1),
-
                 dbc.Col([
                     html.H4("時期別取引金額の推移"),
                     dcc.Graph(
@@ -106,15 +97,13 @@ app.layout = dbc.Container(
                         figure=transction_line,
                     ),
                 ],
-                    width=6,
-                    style={"height": "100%"},
+                    xs=12, sm=12, md=12, lg=6, xl=6,
                 ),
             ],
-            className="h-30"
     ),
 
     ],
-    style={"height": "90vh"},
+    # style={"height": "90vh"},
 )
 
 if __name__ == '__main__':

@@ -1,12 +1,8 @@
 import dash
-from dash import dcc
-import dash_html_components as html
-from dash import dash_table
 import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
-
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+from dash import dcc, html, dash_table
 
 app = dash.Dash(
     external_stylesheets=[dbc.themes.SIMPLEX],
@@ -14,7 +10,7 @@ app = dash.Dash(
         {"name": "viewport", "content": "width=device-width, initial-scale=1"}
     ],
 )
-# server = app.server
+server = app.server
 
 df = pd.read_csv("data/transaction.csv", encoding="cp932")
 view_columns = ['日付', '顧客名', '商品名', '分類', '単価', '数量', '金額']

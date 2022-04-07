@@ -25,7 +25,7 @@ df_sum = df.groupby(["顧客名", "商品名", "単価"]).sum().sort_values(
 view_columns = ['顧客名', '商品名', '単価', '数量', '金額']
 df_sum = df_sum[view_columns]
 
-transction_scatter = px.scatter(df_sum, x="数量", y="単価", color="顧客名",
+transction_scatter = px.scatter(df_sum.sort_values(["顧客名"]), x="数量", y="単価", color="顧客名",
                                 size='金額', hover_data=['商品名'], height=350)
 transction_scatter.update_layout(
     margin=dict(l=10, r=10, t=0, b=0),
